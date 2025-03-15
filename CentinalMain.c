@@ -23,11 +23,12 @@ void Help() {
 
 int main() {
     printf("Centinal CLI - Type 'help' for help.\n");
-
-    char input[MAXINPUT];
     
     // Main CLI loop
     while(1) {
+        // Make sure to reset the command each loop
+        char input[MAXINPUT] = "";
+
         // Get commmand
         printf("> ");
         if (!fgets(input, MAXINPUT, stdin)) {

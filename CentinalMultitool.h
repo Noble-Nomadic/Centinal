@@ -49,8 +49,8 @@ void ViewFile() {
 
 // Inner CLI loop
 void FileMultitoolLoop() {
-
-    char input[MAXINPUT];
+    // Reset input variable each loop
+    char input[MAXINPUT] = "";
 
     while (1) {
         printf("Files> ");
