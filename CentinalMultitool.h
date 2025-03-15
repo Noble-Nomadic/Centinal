@@ -12,7 +12,21 @@ void FileHelp() {
     printf("1. help\n");
     printf("2. exit\n")
     printf("3. new\n");
+    printf("4. view\n");
+    printf("5. delete\n")
 }
+
+// New file command
+void NewFile() {
+    char newFileName[MAXINPUT + 20];
+
+    printf("Enter file name \n > ");
+
+    if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
+        return;
+    }
+}
+
 
 // Inner CLI loop
 void FileMultitoolLoop() {
