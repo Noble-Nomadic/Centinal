@@ -10,7 +10,8 @@
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
     printf("1. help\n");
-    printf("2. new\n");
+    printf("2. exit\n")
+    printf("3. new\n");
 }
 
 // Inner CLI loop
@@ -25,8 +26,12 @@ void FileMultitoolLoop() {
             break;
         }
 
-        if (strcmp(input, "help")) {
+        if (strcmp(input, "help") == 0) {
             FileHelp();
+        }
+
+        else if (strcmp(input, "exit") == 0) {
+            break;
         }
     }
 }

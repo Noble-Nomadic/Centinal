@@ -12,10 +12,11 @@
 void Help() {
     printf("Centinal CLI Commands\n");
     printf("1. help\n");
-    printf("2. files\n");
-    printf("3. security\n");
-    printf("4. system\n");
-    printf("5. encryption\n");
+    printf("2. exit");
+    printf("3. files\n");
+    printf("4. security\n");
+    printf("5. system\n");
+    printf("6. encryption\n");
 
 }
 
@@ -39,8 +40,14 @@ int main() {
             Help();
         }
 
+        else if (strcmp(input, "exit")) {
+            break;
+        }
+
         else if (strcmp(input, "files") == 0) {
             FileMultitoolLoop();
         }
     }
+
+    return 0;
 }
