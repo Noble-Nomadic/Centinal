@@ -12,7 +12,7 @@
 void Help() {
     printf("Centinal CLI Commands\n");
     printf("1. help\n");
-    printf("2. exit");
+    printf("2. exit\n");
     printf("3. files\n");
     printf("4. security\n");
     printf("5. system\n");
