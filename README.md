@@ -1,4 +1,4 @@
-#Centinal
+# Centinal
 C based sentinal is a simple CLI system for managing a files, tracking device peformance, encrytion, and a simple anti-virus.
 This is a fun project for an old linux laptop.
 
