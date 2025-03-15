@@ -27,12 +27,13 @@ int main() {
     // Main CLI loop
     while(1) {
         // Make sure to reset the command each loop
-        char input[MAXINPUT] = "";
+        char input[MAXINPUT];
 
         // Get commmand
         printf("> ");
+
         if (!fgets(input, MAXINPUT, stdin)) {
-            break;
+            printf("Invalid Command\n");
         }
         input[strcspn(input, "\n")] = 0;
         
@@ -41,7 +42,7 @@ int main() {
             Help();
         }
 
-        else if (strcmp(input, "exit")) {
+        else if (strcmp(input, "exit") == 0) {
             break;
         }
 

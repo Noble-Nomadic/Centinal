@@ -40,11 +40,21 @@ void ViewFile() {
     char fileName[100];
 
     printf("Enter file name: ");
-    scanf("%s", fileName);
+
+    if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
+        return;
+    }
+    newFileName[strcspn(newFileName, "\n")] = 0
 
 
     FILE *file;
     file = fopen(fileName, "r");
+
+    if (file == NULL) {
+        printf("Error: Could not open file %s\n", fileName);
+        return;
+    }
+    // Add code for reading the file
 
     fclose(file);
 }
@@ -60,12 +70,13 @@ void FileMultitoolLoop() {
         if (!fgets(input, MAXINPUT, stdin)) {
             break;
         }
+        input[strcspn(input, "\n")] = 0; 
 
         if (strcmp(input, "help") == 0) {
             FileHelp();
         }
 
-        else if (strcmp(input, "exit") == 0) {
+        else if (strcmp(input, "exit" == 0) == 0) {
             break;
         }
     }
