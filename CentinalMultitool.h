@@ -10,7 +10,7 @@
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
     printf("1. help\n");
-    printf("2. exit\n")
+    printf("2. exit\n");
     printf("3. new\n");
     printf("4. view\n");
     printf("5. reset");
@@ -33,7 +33,7 @@ void NewFile() {
 
     printf("File created");
 
-    fclose();
+    fclose(newFile);
 }
 // View contents of file
 void ViewFile() {
@@ -45,6 +45,8 @@ void ViewFile() {
 
     FILE *file;
     file = fopen(fileName, "r");
+
+    fclose(file);
 }
 
 // Inner CLI loop
