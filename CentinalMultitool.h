@@ -13,7 +13,9 @@ void FileHelp() {
     printf("2. exit\n")
     printf("3. new\n");
     printf("4. view\n");
-    printf("5. delete\n")
+    printf("5. reset");
+    printf("6. delete\n");
+    printf("7. edit\n");
 }
 
 // New file command
@@ -25,8 +27,25 @@ void NewFile() {
     if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
         return;
     }
-}
 
+    FILE *newFile;
+    newFile = fopen(newFileName, "w");
+
+    printf("File created");
+
+    fclose();
+}
+// View contents of file
+void ViewFile() {
+    char fileName[100];
+
+    printf("Enter file name: ");
+    scanf("%s", fileName);
+
+
+    FILE *file;
+    file = fopen(fileName, "r");
+}
 
 // Inner CLI loop
 void FileMultitoolLoop() {
