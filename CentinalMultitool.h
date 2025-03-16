@@ -154,7 +154,7 @@ void EditFile() {
             break;
         }
 
-        fprintf(lineToAdd);
+        fprintf(file, lineToAdd);
     }
 
     printf("Updated %s\n", fileName);
