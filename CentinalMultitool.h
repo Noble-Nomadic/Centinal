@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #define MAXINPUT 20
-// Main functions for file managing
+
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
     printf("1. help - show this\n");
@@ -18,7 +18,6 @@ void FileHelp() {
     printf("7. edit - append data to a file\n");
 }
 
-// New file command
 void NewFile() {
     char newFileName[MAXINPUT + 20];
 
@@ -39,7 +38,6 @@ void NewFile() {
     fclose(newFile);
 }
 
-// View contents of file
 void ViewFile() {
     char fileName[100];
 
@@ -64,75 +62,71 @@ void ViewFile() {
 
     fclose(file);
 }
-// Keep file but remove all contents
+
 void ResetFile() {
     char fileName[100];
 
     printf("Enter file name: ");
 
-    // Get file name
     if (!fgets(fileName, sizeof(fileName), stdin)) {
         return;
     }
+    fileName[strcspn(fileName, "\n")] = 0;
 
-    FILE *file;
-
-    // Confirm file deletion
     printf("WARNING YOU ARE ABOUT TO RESET %s\n", fileName);
-    printf("Type 'confim' to procede: ");
+    printf("Type 'confirm' to proceed: ");
 
     char confirmReset[10];
     if (!fgets(confirmReset, sizeof(confirmReset), stdin)) {
         return;
     }
-    input[strcspn(input, "\n")] = 0;
+    confirmReset[strcspn(confirmReset, "\n")] = 0;
 
-    // Confirm user wants to reset data
     if (strcmp(confirmReset, "confirm") != 0) {
         printf("Operation cancelled\n");
         return;
     }
-    input[strcspn(input, "\n")] = 0;
-    
-    file = fopen(fileName, "w");
-    fclose(file);
 
-    printf("Data of %i reset\n", fileName);
+    FILE *file = fopen(fileName, "w");
+    if (file) {
+        fclose(file);
+        printf("Data of %s reset\n", fileName);
+    } else {
+        printf("Error: Could not reset file %s\n", fileName);
+    }
 }
-// Remove file function. Deletes a file specified
+
 void DeleteFile() {
     char fileName[100];
 
     printf("Enter file name: ");
 
-    // Get the file name
     if (!fgets(fileName, sizeof(fileName), stdin)) {
         return;
     }
-    input[strcspn(input, "\n")] = 0;
-
-    // Confirm user wants to delete this file
-    char confirmDelete[10];
+    fileName[strcspn(fileName, "\n")] = 0;
 
     printf("WARNING YOU ARE ABOUT TO DELETE %s\n", fileName);
-    printf("Type 'confirm' to procede: ");
+    printf("Type 'confirm' to proceed: ");
 
+    char confirmDelete[10];
     if (!fgets(confirmDelete, sizeof(confirmDelete), stdin)) {
         return;
     }
+    confirmDelete[strcspn(confirmDelete, "\n")] = 0;
 
-    if (strcmp(confirmDelete, "confim") != 0) {
+    if (strcmp(confirmDelete, "confirm") != 0) {
         printf("Operation cancelled\n");
         return;
     }
 
-    // User has confirmed file deletion
-    remove(fileName);
-    printf("Removed %s\n", fileName);
+    if (remove(fileName) == 0) {
+        printf("Removed %s\n", fileName);
+    } else {
+        printf("Error: Could not delete file %s\n", fileName);
+    }
 }
 
-
-// Inner CLI loop
 void FileMultitoolLoop() {
     char input[MAXINPUT];
 
@@ -159,12 +153,12 @@ void FileMultitoolLoop() {
         else if (strcmp(input, "view") == 0) {
             ViewFile();
         }
-
-        else if (strcmp(input, "reset")) {
+        
+        else if (strcmp(input, "reset") == 0) {
             ResetFile();
         }
-
-        else if (strcmp(input, "delete")) {
+        
+        else if (strcmp(input, "delete") == 0) {
             DeleteFile();
         }
     }
