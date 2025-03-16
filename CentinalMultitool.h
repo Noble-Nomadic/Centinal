@@ -127,6 +127,41 @@ void DeleteFile() {
     }
 }
 
+void EditFile() {
+    char fileName[100];
+
+    printf("Enter file name: ");
+
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
+        return;
+    }
+    fileName[strcspn(fileName, "\n")] = 0;
+
+    FILE *file;
+    file = fopen(fileName, "a");
+
+    while (1) {
+        char lineToAdd[100];
+
+        printf("Enter line to add, type END to quit: ");
+        
+        if (!fgets(lineToAdd, sizeof(lineToAdd), stdin)) {
+            return;
+        }
+        lineToAdd[strcspn(lineToAdd, "\n")] = 0;
+
+        if (strcmp(lineToAdd, "END") == 0) {
+            break;
+        }
+
+        fprintf(lineToAdd);
+    }
+
+    printf("Updated %s\n", fileName);
+    fclose(file);
+}
+
+
 void FileMultitoolLoop() {
     char input[MAXINPUT];
 
@@ -160,6 +195,10 @@ void FileMultitoolLoop() {
         
         else if (strcmp(input, "delete") == 0) {
             DeleteFile();
+        }
+
+        else if (strcmp(input, "edit") == 0) {
+            EditFile();
         }
     }
 }
