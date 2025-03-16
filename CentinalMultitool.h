@@ -56,9 +56,7 @@ void ViewFile() {
         return;
     }
 
-    // Add code for reading the file
     char line[100];
-
     while (fgets(line, sizeof(line), file)) {
         printf("%s", line);
     }
@@ -68,7 +66,6 @@ void ViewFile() {
 
 // Inner CLI loop
 void FileMultitoolLoop() {
-    // Reset input variable each loop
     char input[MAXINPUT];
 
     while (1) {
@@ -81,17 +78,11 @@ void FileMultitoolLoop() {
 
         if (strcmp(input, "help") == 0) {
             FileHelp();
-        }
-
-        else if (strcmp(input, "exit") == 0) {
+        } else if (strcmp(input, "exit") == 0) {
             break;
-        }
-
-        else if (strcmp(input, "new") == 0) {
+        } else if (strcmp(input, "new") == 0) {
             NewFile();
-        }
-
-        else if (strcmp(input, "view" == 0)) {
+        } else if (strcmp(input, "view") == 0) {
             ViewFile();
         }
     }
