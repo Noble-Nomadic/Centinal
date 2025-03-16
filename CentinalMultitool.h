@@ -57,6 +57,11 @@ void ViewFile() {
     }
 
     // Add code for reading the file
+    char line[100];
+
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
 
     fclose(file);
 }
@@ -80,6 +85,14 @@ void FileMultitoolLoop() {
 
         else if (strcmp(input, "exit") == 0) {
             break;
+        }
+
+        else if (strcmp(input, "new") == 0) {
+            NewFile();
+        }
+
+        else if (strcmp(input, "view" == 0)) {
+            ViewFile();
         }
     }
 }
