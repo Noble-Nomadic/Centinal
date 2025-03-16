@@ -60,6 +60,7 @@ void ViewFile() {
     while (fgets(line, sizeof(line), file)) {
         printf("%s", line);
     }
+    printf("\n");
 
     fclose(file);
 }
@@ -69,31 +70,67 @@ void ResetFile() {
 
     printf("Enter file name: ");
 
+    // Get file name
     if (!fgets(fileName, sizeof(fileName), stdin)) {
         return;
     }
 
     FILE *file;
 
+    // Confirm file deletion
     printf("WARNING YOU ARE ABOUT TO RESET %s\n", fileName);
     printf("Type 'confim' to procede: ");
 
     char confirmReset[10];
-
     if (!fgets(confirmReset, sizeof(confirmReset), stdin)) {
         return;
     }
+    input[strcspn(input, "\n")] = 0;
 
+    // Confirm user wants to reset data
     if (strcmp(confirmReset, "confirm") != 0) {
         printf("Operation cancelled\n");
         return;
     }
+    input[strcspn(input, "\n")] = 0;
     
     file = fopen(fileName, "w");
     fclose(file);
 
     printf("Data of %i reset\n", fileName);
 }
+// Remove file function. Deletes a file specified
+void DeleteFile() {
+    char fileName[100];
+
+    printf("Enter file name: ");
+
+    // Get the file name
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
+        return;
+    }
+    input[strcspn(input, "\n")] = 0;
+
+    // Confirm user wants to delete this file
+    char confirmDelete[10];
+
+    printf("WARNING YOU ARE ABOUT TO DELETE %s\n", fileName);
+    printf("Type 'confirm' to procede: ");
+
+    if (!fgets(confirmDelete, sizeof(confirmDelete), stdin)) {
+        return;
+    }
+
+    if (strcmp(confirmDelete, "confim") != 0) {
+        printf("Operation cancelled\n");
+        return;
+    }
+
+    // User has confirmed file deletion
+    remove(fileName);
+    printf("Removed %s\n", fileName);
+}
+
 
 // Inner CLI loop
 void FileMultitoolLoop() {
@@ -121,6 +158,14 @@ void FileMultitoolLoop() {
         
         else if (strcmp(input, "view") == 0) {
             ViewFile();
+        }
+
+        else if (strcmp(input, "reset")) {
+            ResetFile();
+        }
+
+        else if (strcmp(input, "delete")) {
+            DeleteFile();
         }
     }
 }
