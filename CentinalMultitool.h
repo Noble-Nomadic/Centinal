@@ -9,13 +9,13 @@
 // Main functions for file managing
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
-    printf("1. help\n");
-    printf("2. exit\n");
-    printf("3. new\n");
-    printf("4. view\n");
-    printf("5. reset\n");
-    printf("6. delete\n");
-    printf("7. edit\n");
+    printf("1. help - show this\n");
+    printf("2. exit - return to main CLI\n");
+    printf("3. new - create new file\n");
+    printf("4. view - view contents of file\n");
+    printf("5. reset - reset data of a file\n");
+    printf("6. delete - delete a file\n");
+    printf("7. edit - append data to a file\n");
 }
 
 // New file command
@@ -24,7 +24,7 @@ void NewFile() {
 
     printf("Enter file name \n > ");
 
-    if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
+    if (!fgets(newFileName, sizeof(newFileName), stdin)) {
         return;
     }
     newFileName[strcspn(newFileName, "\n")] = 0;
@@ -63,6 +63,37 @@ void ViewFile() {
 
     fclose(file);
 }
+// Keep file but remove all contents
+void ResetFile() {
+    char fileName[100];
+
+    printf("Enter file name: ");
+
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
+        return;
+    }
+
+    FILE *file;
+
+    printf("WARNING YOU ARE ABOUT TO RESET %s\n", fileName);
+    printf("Type 'confim' to procede: ");
+
+    char confirmReset[10];
+
+    if (!fgets(confirmReset, sizeof(confirmReset), stdin)) {
+        return;
+    }
+
+    if (strcmp(confirmReset, "confirm") != 0) {
+        printf("Operation cancelled\n");
+        return;
+    }
+    
+    file = fopen(fileName, "w");
+    fclose(file);
+
+    printf("Data of %i reset\n", fileName);
+}
 
 // Inner CLI loop
 void FileMultitoolLoop() {
@@ -78,11 +109,17 @@ void FileMultitoolLoop() {
 
         if (strcmp(input, "help") == 0) {
             FileHelp();
-        } else if (strcmp(input, "exit") == 0) {
+        }
+        
+        else if (strcmp(input, "exit") == 0) {
             break;
-        } else if (strcmp(input, "new") == 0) {
+        }
+        
+        else if (strcmp(input, "new") == 0) {
             NewFile();
-        } else if (strcmp(input, "view") == 0) {
+        }
+        
+        else if (strcmp(input, "view") == 0) {
             ViewFile();
         }
     }
