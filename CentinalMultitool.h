@@ -13,7 +13,7 @@ void FileHelp() {
     printf("2. exit\n");
     printf("3. new\n");
     printf("4. view\n");
-    printf("5. reset");
+    printf("5. reset\n");
     printf("6. delete\n");
     printf("7. edit\n");
 }
@@ -27,33 +27,35 @@ void NewFile() {
     if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
         return;
     }
+    newFileName[strcspn(newFileName, "\n")] = 0;
 
-    FILE *newFile;
-    newFile = fopen(newFileName, "w");
+    FILE *newFile = fopen(newFileName, "w");
+    if (newFile == NULL) {
+        printf("Error: Could not create file %s\n", newFileName);
+        return;
+    }
 
-    printf("File created");
-
+    printf("File created\n");
     fclose(newFile);
 }
+
 // View contents of file
 void ViewFile() {
     char fileName[100];
 
     printf("Enter file name: ");
 
-    if (!fgets(newFileName, MAXINPUT + 20, stdin)) {
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
         return;
     }
-    newFileName[strcspn(newFileName, "\n")] = 0
+    fileName[strcspn(fileName, "\n")] = 0;
 
-
-    FILE *file;
-    file = fopen(fileName, "r");
-
+    FILE *file = fopen(fileName, "r");
     if (file == NULL) {
         printf("Error: Could not open file %s\n", fileName);
         return;
     }
+
     // Add code for reading the file
 
     fclose(file);
@@ -62,7 +64,7 @@ void ViewFile() {
 // Inner CLI loop
 void FileMultitoolLoop() {
     // Reset input variable each loop
-    char input[MAXINPUT] = "";
+    char input[MAXINPUT];
 
     while (1) {
         printf("Files> ");
@@ -70,13 +72,13 @@ void FileMultitoolLoop() {
         if (!fgets(input, MAXINPUT, stdin)) {
             break;
         }
-        input[strcspn(input, "\n")] = 0; 
+        input[strcspn(input, "\n")] = 0;
 
         if (strcmp(input, "help") == 0) {
             FileHelp();
         }
 
-        else if (strcmp(input, "exit" == 0) == 0) {
+        else if (strcmp(input, "exit") == 0) {
             break;
         }
     }
