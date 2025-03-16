@@ -154,6 +154,7 @@ void EditFile() {
             break;
         }
 
+        strcat(lineToAdd, "\n")
         fprintf(file, lineToAdd);
     }
 
