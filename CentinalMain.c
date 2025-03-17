@@ -48,6 +48,10 @@ int main() {
         else if (strcmp(input, "files") == 0) {
             FileMultitoolLoop();
         }
+
+        else if (strcmp(input, "encryption") == 0) {
+            EncryptionLoop();
+        }
     }
 
     return 0;
