@@ -82,6 +82,74 @@ void EncryptFile() {
     printf("Encrypted file created with %i as the key\n", userKey);
 }
 
+void DecryptFile() {
+    char encryptedFileName[100];
+
+    printf("Enter encrypted file name: ");
+    if (!fgets(encryptedFileName, sizeof(encryptedFileName), stdin)) {
+        printf("Error reading input\n");
+        return;
+    }
+
+    // Remove newline character from encrypted file name
+    encryptedFileName[strcspn(encryptedFileName, "\n")] = 0;
+
+    // Debug: Print the entered file name
+    printf("Attempting to open encrypted file: '%s'\n", encryptedFileName);
+
+    FILE *encryptedFile = fopen(encryptedFileName, "r");
+
+    if (!encryptedFile) {
+        perror("Error opening file");
+        return;
+    }
+
+    char decryptedFileName[100];
+
+    printf("Enter name for decrypted file: ");
+    if (!fgets(decryptedFileName, sizeof(decryptedFileName), stdin)) {
+        printf("Error reading input\n");
+        fclose(encryptedFile);
+        return;
+    }
+
+    // Remove newline character from decrypted file name
+    decryptedFileName[strcspn(decryptedFileName, "\n")] = 0;
+
+    int userKey;
+
+    printf("Enter the key value used for encryption (between 1 and 10): ");
+    scanf("%i", &userKey);
+    getchar(); // Consume the newline character left by scanf
+
+    // Validate key
+    if (userKey < 1 || userKey > 10) {
+        printf("Invalid key. Please enter a value between 1 and 10.\n");
+        fclose(encryptedFile);
+        return;
+    }
+
+    FILE *decryptedFile = fopen(decryptedFileName, "w");
+    if (!decryptedFile) {
+        printf("Could not create decrypted file %s\n", decryptedFileName);
+        fclose(encryptedFile);
+        return;
+    }
+
+    int encryptedValue;
+    while (fscanf(encryptedFile, "%i", &encryptedValue) != EOF) {
+        char decryptedChar = encryptedValue / userKey;
+
+        // Decrypt and write to the file
+        fputc(decryptedChar, decryptedFile);
+    }
+
+    fclose(decryptedFile);
+    fclose(encryptedFile);
+
+    printf("Decrypted file created with %i as the key\n", userKey);
+}
+
 void EncryptionLoop() {
     char input[100];
 
@@ -103,7 +171,13 @@ void EncryptionLoop() {
         
         else if (strcmp(input, "encrypt") == 0) {
             EncryptFile();
-        } else {
+        }
+
+        else if (strcmp(input, "decrypt") == 0) {
+            DecryptFile();
+        }
+
+        else {
             printf("Unknown command. Type 'help' for a list of commands.\n");
         }
     }
