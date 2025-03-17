@@ -7,7 +7,6 @@
 #include "CentinalEncryption.h"
 #include "CentinalSystem.h"
 
-#define MAXINPUT 20
 
 void Help() {
     printf("Centinal CLI Commands\n");
@@ -27,12 +26,12 @@ int main() {
     // Main CLI loop
     while(1) {
         // Make sure to reset the command each loop
-        char input[MAXINPUT];
+        char input[MAXCOMMANDINPUT];
 
         // Get commmand
         printf("> ");
 
-        if (!fgets(input, MAXINPUT, stdin)) {
+        if (!fgets(input, MAXCOMMANDINPUT, stdin)) {
             printf("Invalid Command\n");
         }
         input[strcspn(input, "\n")] = 0;

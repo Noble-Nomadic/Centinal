@@ -5,8 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAXINPUT 20
-
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
     printf("1. help - show this\n");
