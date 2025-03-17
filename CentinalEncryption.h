@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXINPUT 256
-
 void EncryptionHelp() {
     printf("Centinal Encryption Commands\n");
     printf("help - show this\n");
@@ -49,13 +47,16 @@ void EncryptFile() {
     if (!EncryptedFile) {
         printf("Could not create encrypted file %s\n", encryptedFileName);
         fclose(sourceFile);
+        
         return;
     }
 
     char currentChar = fgetc(sourceFile);
     while (currentChar != EOF) {
         int ASCIITOAPPEND = currentChar;
+
         fprintf(EncryptedFile, "%i ", ASCIITOAPPEND * userKey);
+
         currentChar = fgetc(sourceFile);
     }
 
@@ -66,11 +67,11 @@ void EncryptFile() {
 }
 
 void EncryptionLoop() {
-    char input[MAXINPUT];
+    char input[100];
 
     while (1) {
         printf("Encryption> ");
-        if (!fgets(input, MAXINPUT, stdin)) {
+        if (!fgets(input, sizeof(input), stdin)) {
             break;
         }
 

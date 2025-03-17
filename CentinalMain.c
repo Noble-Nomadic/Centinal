@@ -26,12 +26,12 @@ int main() {
     // Main CLI loop
     while(1) {
         // Make sure to reset the command each loop
-        char input[MAXCOMMANDINPUT];
+        char input[100];
 
         // Get commmand
         printf("> ");
 
-        if (!fgets(input, MAXCOMMANDINPUT, stdin)) {
+        if (!fgets(input, sizeof(input), stdin)) {
             printf("Invalid Command\n");
         }
         input[strcspn(input, "\n")] = 0;

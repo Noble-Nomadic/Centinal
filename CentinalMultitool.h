@@ -17,7 +17,7 @@ void FileHelp() {
 }
 
 void NewFile() {
-    char newFileName[MAXINPUT + 20];
+    char newFileName[100];
 
     printf("Enter file name \n > ");
 
@@ -162,12 +162,12 @@ void EditFile() {
 
 
 void FileMultitoolLoop() {
-    char input[MAXINPUT];
+    char input[100];
 
     while (1) {
         printf("Files> ");
 
-        if (!fgets(input, MAXINPUT, stdin)) {
+        if (!fgets(input, sizeof(input), stdin)) {
             break;
         }
         input[strcspn(input, "\n")] = 0;
