@@ -199,6 +199,10 @@ void FileMultitoolLoop() {
         else if (strcmp(input, "edit") == 0) {
             EditFile();
         }
+
+        else {
+            printf("Unknown command. Type 'help' for a list of commands.\n");
+        }
     }
 }
 
