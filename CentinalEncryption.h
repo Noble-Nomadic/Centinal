@@ -17,13 +17,20 @@ void EncryptFile() {
 
     printf("Enter file name: ");
     if (!fgets(fileName, sizeof(fileName), stdin)) {
+        printf("Error reading input\n");
         return;
     }
+
+    // Remove newline character if present
+    fileName[strcspn(fileName, "\n")] = 0;
+
+    // Debug: Print the entered file name
+    printf("Attempting to open file: '%s'\n", fileName);
 
     FILE *sourceFile = fopen(fileName, "r");
 
     if (!sourceFile) {
-        printf("Could not open file %s\n", fileName);
+        perror("Error opening file");
         return;
     }
 
@@ -31,23 +38,31 @@ void EncryptFile() {
 
     printf("Enter name for encrypted file: ");
     if (!fgets(encryptedFileName, sizeof(encryptedFileName), stdin)) {
+        printf("Error reading input\n");
+        fclose(sourceFile);
         return;
     }
 
+    // Remove newline character from encrypted file name
     encryptedFileName[strcspn(encryptedFileName, "\n")] = 0;
 
     int userKey;
 
     printf("Enter a key value between 1 and 10: ");
     scanf("%i", &userKey);
-    
-    getchar();
+    getchar(); // Consume the newline character left by scanf
+
+    // Validate key
+    if (userKey < 1 || userKey > 10) {
+        printf("Invalid key. Please enter a value between 1 and 10.\n");
+        fclose(sourceFile);
+        return;
+    }
 
     FILE *EncryptedFile = fopen(encryptedFileName, "w");
     if (!EncryptedFile) {
         printf("Could not create encrypted file %s\n", encryptedFileName);
         fclose(sourceFile);
-        
         return;
     }
 
@@ -55,6 +70,7 @@ void EncryptFile() {
     while (currentChar != EOF) {
         int ASCIITOAPPEND = currentChar;
 
+        // Encrypt and write to the file
         fprintf(EncryptedFile, "%i ", ASCIITOAPPEND * userKey);
 
         currentChar = fgetc(sourceFile);
@@ -63,7 +79,7 @@ void EncryptFile() {
     fclose(EncryptedFile);
     fclose(sourceFile);
 
-    printf("Encrypted file with %i as the key\n", userKey);
+    printf("Encrypted file created with %i as the key\n", userKey);
 }
 
 void EncryptionLoop() {
@@ -75,7 +91,7 @@ void EncryptionLoop() {
             break;
         }
 
-        input[strcspn(input, "\n")] = 0;
+        input[strcspn(input, "\n")] = 0;  // Remove newline character
 
         if (strcmp(input, "help") == 0) {
             EncryptionHelp();
@@ -87,6 +103,8 @@ void EncryptionLoop() {
         
         else if (strcmp(input, "encrypt") == 0) {
             EncryptFile();
+        } else {
+            printf("Unknown command. Type 'help' for a list of commands.\n");
         }
     }
 }
