@@ -6,14 +6,15 @@ More features may be implemented over time, but I am casually working on this in
 
 ## Current features planned
 - File multitool: Basics complete
-- Encryption for files: Not started
+- Encryption for files: Basics complete
 - File scanning antivirus: Not started
 - System peformance tracking: Not started
 - Logging system: Not started
+- Unit based memory system
 
 ## Possible features
-- Unit based memory
 - Automated commands and schedule
+- Interpretor for .txt files to read commands similar to a bash script
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.

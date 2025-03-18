@@ -82,6 +82,8 @@ void EncryptFile() {
     printf("Encrypted file created with %i as the key\n", userKey);
 }
 
+
+
 void DecryptFile() {
     char encryptedFileName[100];
 
