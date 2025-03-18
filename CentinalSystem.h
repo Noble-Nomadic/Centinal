@@ -13,11 +13,14 @@ void SystemHelp() {
     printf("ram - view data about ram usage and type\n");
     printf("disk - view data about hard drive storage\n");
     printf("sum - summarise basic data about system components and resources\n");
+    printf("NOTE: In some functions you may need to press enter to continue or finish them\n");
 }
 
 void SystemCpu() {
     printf("CPU Hardware:\n");
     system("lscpu");
+
+    getchar();
 
     printf("Current CPU data:\n");
     system("top -n 1");
@@ -41,17 +44,21 @@ void SystemDisk() {
 void SystemSum() {
     printf("System summary");
 
-    printf("CPU\n");
+    printf("\n\nCPU\n\n");
     system("top -n 1");
+    getchar();
 
     printf("GPU\n");
     system("sudo timeout 1s intel_gpu_top");
+    getchar();
 
     printf("RAM\n");
     system("free -h");
+    getchar();
 
     printf("Disk\n");
     system("df -h");
+    getchar();
 }
 
 
