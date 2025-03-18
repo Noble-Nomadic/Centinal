@@ -16,22 +16,43 @@ void SystemHelp() {
 }
 
 void SystemCpu() {
+    printf("CPU Hardware:\n");
+    system("lscpu");
 
+    printf("Current CPU data:\n");
+    system("top -n 1");
 }
 
 void SystemGpu() {
-
+    printf("GPU info:\n");
+    system("sudo timeout 1s intel_gpu_top");
 }
 
 void SystemRam() {
-
+    printf("RAM info");
+    system("free -h");
 }
 
 void SystemDisk() {
-
+    printf("Disk info:\n");
+    system("df -h");
 }
 
-void SystemSum()
+void SystemSum() {
+    printf("System summary");
+
+    printf("CPU\n");
+    system("top -n 1");
+
+    printf("GPU\n");
+    system("sudo timeout 1s intel_gpu_top");
+
+    printf("RAM\n");
+    system("free -h");
+
+    printf("Disk\n");
+    system("df -h");
+}
 
 
 void SystemLoop() {
@@ -52,11 +73,29 @@ void SystemLoop() {
             SystemHelp();
         }
 
-        else if (strcmp(input, "exit")) {
+        else if (strcmp(input, "exit") == 0) {
             break;
         }
 
-        else if (strcmp(input, "cpu") == 0)
+        else if (strcmp(input, "cpu") == 0) {
+            SystemCpu();
+        }
+
+        else if (strcmp(input, "gpu") == 0) {
+            SystemGpu();
+        }
+
+        else if (strcmp(input, "ram") == 0) {
+            SystemRam();
+        }
+
+        else if (strcmp(input, "disk") == 0) {
+            SystemDisk();
+        }
+
+        else if (strcmp(input, "sum" == 0)) {
+            SystemSum();
+        }
     }
 }
 

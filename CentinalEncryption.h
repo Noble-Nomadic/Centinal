@@ -120,13 +120,13 @@ void DecryptFile() {
 
     int userKey;
 
-    printf("Enter the key value used for encryption (between 1 and 10): ");
+    printf("Enter the key value used for encryption (between 1 and 100): ");
     scanf("%i", &userKey);
     getchar(); // Consume the newline character left by scanf
 
     // Validate key
-    if (userKey < 1 || userKey > 10) {
-        printf("Invalid key. Please enter a value between 1 and 10.\n");
+    if (userKey < 1 || userKey > 100) {
+        printf("Invalid key. Please enter a value between 1 and 100.\n");
         fclose(encryptedFile);
         return;
     }

@@ -4,17 +4,21 @@ This is a fun project for an old linux laptop.
 
 More features may be implemented over time, but I am casually working on this in my free time so I don't want to commit to a bunch of features now.
 
+Please note that this project is being developed on and for my old linux Toshiba satellite a300 from 2003
+If you are not using linux, some features will not be compatible, and all users may find that some hardware is incompatible with certain commands
+
 ## Current features planned
 - File multitool: Basics complete
 - Encryption for files: Basics complete
 - File scanning antivirus: Not started
-- System peformance tracking: Not started
+- System peformance tracking: Basics complete
 - Logging system: Not started
-- Unit based memory system
+- Unit based memory system: Not started
+- Interpretor for commands: Not started
 
 ## Possible features
 - Automated commands and schedule
-- Interpretor for .txt files to read commands similar to a bash script
+- Internet activity security and monitering
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.
