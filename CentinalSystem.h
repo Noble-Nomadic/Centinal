@@ -93,7 +93,7 @@ void SystemLoop() {
             SystemDisk();
         }
 
-        else if (strcmp(input, "sum" == 0)) {
+        else if (strcmp(input, "sum") == 0) {
             SystemSum();
         }
     }
