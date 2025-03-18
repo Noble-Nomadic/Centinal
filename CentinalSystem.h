@@ -17,18 +17,15 @@ void SystemHelp() {
 }
 
 void SystemCpu() {
-    printf("CPU Hardware:\n");
+    print("CPU Information\n");
     system("lscpu");
 
-    getchar();
-
-    printf("Current CPU data:\n");
-    system("top -n 1");
+    printf("Current CPU Status\n");
+    system("top -n 1 -b");
 }
 
 void SystemGpu() {
-    printf("GPU info:\n");
-    system("sudo timeout 1s intel_gpu_top");
+    system("intel_g")
 }
 
 void SystemRam() {
