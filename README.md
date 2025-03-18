@@ -10,7 +10,7 @@ If you are not using linux, some features will not be compatible, and all users 
 ## Current features planned
 - File multitool: Basics complete
 - Encryption for files: Basics complete
-- File scanning antivirus: Not started
+- File scanning antivirus: Currently Developing
 - System peformance tracking: Basics complete
 - Logging system: Not started
 - Unit based memory system: Not started
