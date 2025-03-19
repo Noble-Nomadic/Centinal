@@ -100,6 +100,10 @@ void SystemLoop() {
         else if (strcmp(input, "sum") == 0) {
             SystemSum();
         }
+
+        else {
+            printf("Unknown command. Type 'help' for a list of commands.\n");
+        }
     }
 }
 

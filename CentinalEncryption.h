@@ -134,6 +134,7 @@ void DecryptFile() {
     FILE *decryptedFile = fopen(decryptedFileName, "w");
     if (!decryptedFile) {
         printf("Could not create decrypted file %s\n", decryptedFileName);
+        
         fclose(encryptedFile);
         return;
     }
