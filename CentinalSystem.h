@@ -25,7 +25,7 @@ void SystemCpu() {
 }
 
 void SystemGpu() {
-    system("intel_g")
+    system("intel_g");
 }
 
 void SystemRam() {
