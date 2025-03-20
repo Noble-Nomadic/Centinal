@@ -15,7 +15,7 @@ void SecurityHelp() {
     printf("help - display this\n");
     printf("exit - return to main CLI\n");
     printf("scana - scan a directory\n");
-    printf("scanb - scan directory including subfolders\n");
+    printf("scanb - scan all files\n");
 }
 
 void SecurityInit() {
@@ -200,7 +200,7 @@ void ScanFull(const char *dirPath) {
 void SecurityLoop() {
     char input[100];
     
-    printf("Initialising security...");
+    printf("Initialising security...\n");
     SecurityInit();
     
     while (1) {
@@ -223,8 +223,15 @@ void SecurityLoop() {
             break;
         }
 
-        else if (strcmp(input, "scana") == 0) {            
-            ScanDir(".");
+        else if (strcmp(input, "scana") == 0) {
+			
+			char directoryPath[100];
+			
+			if (!fgets(directoryPath, sizeof(directoryPath), stdin)) {
+				return;
+			}
+			
+            ScanDir(directoryPath);
         }
 
         else if (strcmp(input, "scanb") == 0) {

@@ -19,17 +19,19 @@ void SystemHelp() {
 void SystemCpu() {
     printf("CPU Information\n");
     system("lscpu");
+	
+	getchar();
 
     printf("Current CPU Status\n");
     system("top -n 1 -b");
 }
 
 void SystemGpu() {
-    system("intel_g");
+    system("sudo timeout 1s intel_gpu_top");
 }
 
 void SystemRam() {
-    printf("RAM info");
+    printf("RAM info\n");
     system("free -h");
 }
 
