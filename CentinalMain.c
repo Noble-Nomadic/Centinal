@@ -57,7 +57,7 @@ int main() {
             EncryptionLoop();
         }
 
-        else if (strcmp(input, "security" == 0)) {
+        else if (strcmp(input, "security") == 0) {
             SecurityLoop();
         }
         
