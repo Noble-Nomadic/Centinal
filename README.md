@@ -12,7 +12,7 @@ If you are not using linux, some features will not be compatible, and all users 
 - Encryption for files: Basics complete
 - File scanning antivirus: Basics complete
 - System peformance tracking: Basics complete
-- Logging system: Currently developing
+- Logging system: Basics complete
 - Unit based memory system: Not started
 - Interpretor for commands: Not started
 

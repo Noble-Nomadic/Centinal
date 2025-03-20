@@ -7,7 +7,7 @@
 #include <sys/stat.h>
 #include <dirent.h>
 
-#include "CentinalLogger_h"
+#include "CentinalLogger.h"
 
 FILE *whiteListFile;
 FILE *blackListFile;
@@ -162,7 +162,7 @@ void ScanDir(const char *dirPath) {
 
     closedir(dir);
 	
-	LogUpdate("scana", dirPath);
+	LogUpdate("scana", dirPath, "blank");
 }
 
 void ScanFull(const char *dirPath) {
@@ -199,7 +199,7 @@ void ScanFull(const char *dirPath) {
 
     closedir(dir);
 	
-	LogUpdate("scanb");
+	LogUpdate("scanb", "blank", "blank");
 }
 
 

@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "CentinalLogger_h"
+#include "CentinalLogger.h"
 
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
@@ -37,7 +37,7 @@ void NewFile() {
     printf("File created\n");
     fclose(newFile);
 	
-	LogUpdate("new", newFileName);
+	LogUpdate("new", newFileName, "blank");
 }
 
 void ViewFile() {
@@ -99,7 +99,7 @@ void ResetFile() {
         printf("Error: Could not reset file %s\n", fileName);
     }
 	
-	LogUpdate("reset", fileName);
+	LogUpdate("reset", fileName, "blank");
 }
 
 void DeleteFile() {
@@ -134,7 +134,7 @@ void DeleteFile() {
         printf("Error: Could not delete file %s\n", fileName);
     }
 	
-	LogUpdate("delete", fileName);
+	LogUpdate("delete", fileName, "blank");
 }
 
 void EditFile() {

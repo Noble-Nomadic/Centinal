@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "CentinalLogger_h"
+#include "CentinalLogger.h"
 
 void EncryptionHelp() {
     printf("Centinal Encryption Commands\n");
@@ -81,7 +81,7 @@ void EncryptFile() {
     fclose(EncryptedFile);
     fclose(sourceFile);
 	
-	LogUpate("encrypt", fileName, encrytpedFileName);
+	LogUpdate("encrypt", fileName, encryptedFileName);
 
     printf("Encrypted file created with %i as the key\n", userKey);
 }
