@@ -40,17 +40,23 @@ void SecurityThreatHelp() {
 	printf("whitelist - add file path to whitelist, will not be scanned again\n");
 }
 
-void SecurityPurgeThreat() {
+void SecurityPurgeThreat(char filePath[100]) {
 	printf("Purging file\n");
+
+	remove(filePath);
 }
 
-void ThreatCLI() {
+void SecurityThreatWhitelist(char filePath[100]) {
+	printf("White listing file\n");
+}
+
+void ThreatCLI(char filePath[100]) {
 	printf("Centinal Threat Manager. Type 'help' for command list\n");
 
 	while (1) {
 		char input[100];
 
-		printf("Threat> ");
+		printf("Security>Threat> ");
 
 		if (!fgets(input, sizeof(input), stdin)) {
 			return;
@@ -59,6 +65,22 @@ void ThreatCLI() {
 
 		if (strcmp(input, "help") == 0) {
 			SecurityThreatHelp();
+		}
+
+		else if (strcmp(input, "exit") == 0 || strcmp(input, "ignore") == 0) {
+			return;
+		}
+
+		else if (strcmp(input, "purge" == 0)) {
+			SecurityPurgeThreat(filePath);
+		}
+
+		else if (strcmp(input, "whitelist") == 0) {
+			SecurityThreatWhitelist(filePath);
+		}
+
+		else {
+			printf("Invalid command. Type 'help' for command list\n");
 		}
 	}
 }
@@ -80,9 +102,12 @@ void ScanFile(char filePath) {
 				printf("WARNING, FILE WITH BLACKLISTED WORD FOUND\n");
 				printf("%s\n", filePath);
 				printf("Opening Centinal threat CLI");
+				ThreatCLI();
 			}
 		}
 	}
+
+	return;
 }
 
 void ScanDir() {
