@@ -56,6 +56,10 @@ int main() {
         else if (strcmp(input, "encryption") == 0) {
             EncryptionLoop();
         }
+
+        else if (strcmp(input, "security" == 0)) {
+            SecurityLoop();
+        }
         
         else {
             printf("Unknown command. Type 'help' for a list of commands.\n");
