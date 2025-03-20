@@ -42,12 +42,24 @@ void SecurityThreatHelp() {
 
 void SecurityPurgeThreat(char filePath[100]) {
 	printf("Purging file\n");
-
+	
 	remove(filePath);
 }
-
+	
 void SecurityThreatWhitelist(char filePath[100]) {
 	printf("White listing file\n");
+
+	line[100];
+	FILE *whiteListAppend;
+
+	whiteListAppend = fopen("WhiteList.txt", "a");
+
+	strstr(filePath, "\n")
+	fprintf(whiteListAppend, filePath);
+
+	printf("Next time file is scanned, %s, won't be considered a threat\n");
+
+	fclose(whiteListAppend);
 }
 
 void ThreatCLI(char filePath[100]) {
