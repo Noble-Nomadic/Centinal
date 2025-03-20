@@ -7,6 +7,8 @@
 #include <sys/stat.h>
 #include <dirent.h>
 
+#include "CentinalLogger_h"
+
 FILE *whiteListFile;
 FILE *blackListFile;
 

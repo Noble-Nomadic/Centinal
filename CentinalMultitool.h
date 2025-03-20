@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "CentinalLogger_h"
+
 void FileHelp() {
     printf("Centinal File Multitool Commands\n");
     printf("1. help - show this\n");

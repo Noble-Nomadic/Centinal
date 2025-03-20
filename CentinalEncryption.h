@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "CentinalLogger_h"
+
 void EncryptionHelp() {
     printf("Centinal Encryption Commands\n");
     printf("help - show this\n");
@@ -48,13 +50,13 @@ void EncryptFile() {
 
     int userKey;
 
-    printf("Enter a key value between 1 and 10: ");
+    printf("Enter a key value between 1 and 100: ");
     scanf("%i", &userKey);
     getchar(); // Consume the newline character left by scanf
 
     // Validate key
-    if (userKey < 1 || userKey > 10) {
-        printf("Invalid key. Please enter a value between 1 and 10.\n");
+    if (userKey < 1 || userKey > 100) {
+        printf("Invalid key. Please enter a value between 1 and 100.\n");
         fclose(sourceFile);
         return;
     }

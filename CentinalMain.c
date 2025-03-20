@@ -6,6 +6,8 @@
 #include "CentinalSecurity.h"
 #include "CentinalEncryption.h"
 #include "CentinalSystem.h"
+#include "CentinalUnits.h"
+#include "CentiScriptReader.h"
 
 
 void Help() {
@@ -17,6 +19,7 @@ void Help() {
     printf("5. system - moniter your system resource\n");
     printf("6. encryption - encrypt and decrypt files\n");
     printf("7. units - store data in unit memory files\n");
+	printf("8. script - read a txt file containing commands\n");
 }
 
 

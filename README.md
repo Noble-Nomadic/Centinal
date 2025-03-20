@@ -7,7 +7,7 @@ More features may be implemented over time, but I am casually working on this in
 Please note that this project is being developed on and for my old linux Toshiba satellite a300 from 2003
 If you are not using linux, some features will not be compatible, and all users may find that some hardware is incompatible with certain commands
 
-## Current features
+## Current features planned
 - File multitool: Basics complete
 - Encryption for files: Basics complete
 - File scanning antivirus: Basics complete
