@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <dirent.h>
 
 FILE *whiteListFile;
 FILE *blackListFile;
@@ -122,12 +124,71 @@ void ScanFile(char filePath) {
 	return;
 }
 
-void ScanDir() {
+void ScanDir(const char *dirPath) {
+    DIR *dir = opendir(dirPath);
 
+    if (dir == NULL) {
+        printf("Error: Unable to open directory %s\n", dirPath);
+        return;
+    }
+
+    struct dirent *entry;
+
+    while ((entry = readdir(dir)) != NULL) {
+
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+            continue;
+        }
+
+        char fullPath[256];
+        snprintf(fullPath, sizeof(fullPath), "%s/%s", dirPath, entry->d_name);
+
+        struct stat path_stat;
+        stat(fullPath, &path_stat);
+
+        // If it's a file, scan it
+        if (S_ISREG(path_stat.st_mode)) {
+            ScanFile(fullPath); 
+        }
+    }
+
+    closedir(dir);
 }
 
-void ScanFull() {
+void ScanFull(const char *dirPath) {
+    DIR *dir = opendir(dirPath);  // Open the directory
 
+    if (dir == NULL) {
+        printf("Error: Unable to open directory %s\n", dirPath);
+        return;
+    }
+
+    struct dirent *entry;
+
+    while ((entry = readdir(dir)) != NULL) {
+        // Skip "." and ".."
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+            continue;
+        }
+
+        char fullPath[256];
+
+        snprintf(fullPath, sizeof(fullPath), "%s/%s", dirPath, entry->d_name);
+        struct stat path_stat;
+
+        stat(fullPath, &path_stat);
+
+
+        if (S_ISREG(path_stat.st_mode)) {
+            ScanFile(fullPath);
+        }
+
+        else if (S_ISDIR(path_stat.st_mode)) {
+            ScanFull(fullPath);
+        }
+    }
+
+    closedir(dir);
 }
 
 
