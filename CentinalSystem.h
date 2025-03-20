@@ -17,7 +17,7 @@ void SystemHelp() {
 }
 
 void SystemCpu() {
-    print("CPU Information\n");
+    printf("CPU Information\n");
     system("lscpu");
 
     printf("Current CPU Status\n");
