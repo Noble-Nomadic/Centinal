@@ -7,18 +7,14 @@ More features may be implemented over time, but I am casually working on this in
 Please note that this project is being developed on and for my old linux Toshiba satellite a300 from 2003
 If you are not using linux, some features will not be compatible, and all users may find that some hardware is incompatible with certain commands
 
-## Current features planned
+## Current features
 - File multitool: Basics complete
 - Encryption for files: Basics complete
-- File scanning antivirus: Currently Developing
+- File scanning antivirus: Basics complete
 - System peformance tracking: Basics complete
-- Logging system: Not started
+- Logging system: Currently developing
 - Unit based memory system: Not started
 - Interpretor for commands: Not started
-
-## Possible features
-- Automated commands and schedule
-- Internet activity security and monitering
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.
