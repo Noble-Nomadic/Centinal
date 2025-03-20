@@ -1,13 +1,13 @@
 #ifndef CentinalLogger_h
 #define CentinalLogger_h
 
-void LogUpdate(char stringDataA[100], char stringDataB[100], stringDataC) {
+void LogUpdate(char stringDataA[100], char stringDataB[100], char stringDataC)[100] {
 	FILE *file;
 	file = fopen("CentinalLog.txt", "a");
 	
 	// LOGGING DATA
 	// String A provides data about what command to log
-	// String is additonal information to log based on string A
+	// Strings B and C is additonal information to log based on string A
 	if (strcmp(stringDataA, "new") == 0) {
 		fprinf("Created file %s\n", stringDataB);
 	}

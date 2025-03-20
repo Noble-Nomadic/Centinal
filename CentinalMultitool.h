@@ -36,6 +36,8 @@ void NewFile() {
 
     printf("File created\n");
     fclose(newFile);
+	
+	LogUpdate("new", newFileName);
 }
 
 void ViewFile() {
@@ -91,9 +93,13 @@ void ResetFile() {
     if (file) {
         fclose(file);
         printf("Data of %s reset\n", fileName);
-    } else {
+    }
+	
+	else {
         printf("Error: Could not reset file %s\n", fileName);
     }
+	
+	LogUpdate("reset", fileName);
 }
 
 void DeleteFile() {
@@ -122,9 +128,13 @@ void DeleteFile() {
 
     if (remove(fileName) == 0) {
         printf("Removed %s\n", fileName);
-    } else {
+    }
+	
+	else {
         printf("Error: Could not delete file %s\n", fileName);
     }
+	
+	LogUpdate("delete", fileName);
 }
 
 void EditFile() {
@@ -156,6 +166,8 @@ void EditFile() {
 
         strcat(lineToAdd, "\n");
         fprintf(file, lineToAdd);
+		
+		LogUpdate("edit", fileName, lineToAdd);
     }
 
     printf("Updated %s\n", fileName);

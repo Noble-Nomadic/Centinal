@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdio.h>
 
-#include "CentinalLogger_h"
-
 void SystemHelp() {
     printf("Centinal System Commands\n");
     printf("help - display this\n");

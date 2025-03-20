@@ -161,6 +161,8 @@ void ScanDir(const char *dirPath) {
     }
 
     closedir(dir);
+	
+	LogUpdate("scana", dirPath);
 }
 
 void ScanFull(const char *dirPath) {
@@ -196,6 +198,8 @@ void ScanFull(const char *dirPath) {
     }
 
     closedir(dir);
+	
+	LogUpdate("scanb");
 }
 
 

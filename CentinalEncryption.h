@@ -80,6 +80,8 @@ void EncryptFile() {
 
     fclose(EncryptedFile);
     fclose(sourceFile);
+	
+	LogUpate("encrypt", fileName, encrytpedFileName);
 
     printf("Encrypted file created with %i as the key\n", userKey);
 }
@@ -151,7 +153,9 @@ void DecryptFile() {
 
     fclose(decryptedFile);
     fclose(encryptedFile);
-
+	
+	LogUpdate("decrypt", encryptedFileName, decryptedFileName);
+		
     printf("Decrypted file created with %i as the key\n", userKey);
 }
 
