@@ -14,7 +14,7 @@ If you are not using linux, some features will not be compatible, and all users 
 - System peformance tracking: Basics complete
 - Logging system: Basics complete
 - Unit based memory system: Not started
-- Interpretor for commands: Not started
+- Interpretor for commands: Currently developing
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.
