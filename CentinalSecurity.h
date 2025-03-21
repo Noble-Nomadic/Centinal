@@ -119,7 +119,7 @@ void ScanFile(char filePath[100]) {
             blackListWord[strcspn(blackListWord, "\n")] = 0;
 
             if (strstr(line, blackListWord) != NULL) {
-                LogUpdate("threat", filePath);
+                LogUpdate("threat", filePath, "blank");
 
                 printf("WARNING, FILE WITH BLACKLISTED WORD FOUND\n");
                 printf("%s\n", filePath);
