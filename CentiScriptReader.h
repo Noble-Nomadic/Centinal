@@ -11,7 +11,7 @@ void ReadScript() {
     }
 
     FILE *file;
-    file = fopen("r");
+    file = fopen(fileName, "r");
 
     fclose(file);
 }
