@@ -39,6 +39,10 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[])
 	else if (strcmp(stringDataA, "scanB") == 0) {
 		fprintf(file, "Scanned full system for threats\n");
 	}
+
+	else if (strcmp(stringDataA, "threat") == 0) {
+		fprintf(file, "Threat detected in %s", stringDataB);
+	}
 	
 	fclose(file);
 }

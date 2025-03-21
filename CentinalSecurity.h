@@ -119,6 +119,8 @@ void ScanFile(char filePath[100]) {
             blackListWord[strcspn(blackListWord, "\n")] = 0;
 
             if (strstr(line, blackListWord) != NULL) {
+                LogUpdate("threat", filePath);
+
                 printf("WARNING, FILE WITH BLACKLISTED WORD FOUND\n");
                 printf("%s\n", filePath);
                 printf("Opening Centinal threat CLI");
