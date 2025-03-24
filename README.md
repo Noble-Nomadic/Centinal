@@ -13,7 +13,6 @@ If you are not using linux, some features will not be compatible, and all users 
 - File scanning antivirus: Basics complete
 - System peformance tracking: Basics complete
 - Logging system: Basics complete
-- Unit based memory system: Currently developing
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.
