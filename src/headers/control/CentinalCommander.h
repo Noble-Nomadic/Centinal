@@ -13,8 +13,6 @@ void Help() {
     printf("4. security - antivirus scanning\n");
     printf("5. system - moniter your system resource\n");
     printf("6. encryption - encrypt and decrypt files\n");
-    printf("7. units - compress data in unit memory files\n");
-	printf("8. script - read a txt file containing commands\n");
 }
 
 int processCommand(char input[100]) {
