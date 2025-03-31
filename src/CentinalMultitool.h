@@ -16,6 +16,7 @@ void FileHelp() {
     printf("5. reset - reset data of a file\n");
     printf("6. delete - delete a file\n");
     printf("7. edit - append data to a file\n");
+    printf("8. line - edit a specific line of a file\n");
 }
 
 void NewFile() {
@@ -174,6 +175,90 @@ void EditFile() {
     fclose(file);
 }
 
+#include <stdio.h>
+#include <stdlib.h>
+
+void EditLine() {
+    char fileName[100];
+    char tempFileName[] = "temp.txt";  // Temporary file name
+
+    // Get file name
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
+        return;
+    }
+
+    // Open the original file for reading
+    FILE *file = fopen(fileName, "r");
+    if (!file) {
+        printf("Could not open file for reading.\n");
+        return;
+    }
+
+    // Open a temporary file for writing
+    FILE *tempFile = fopen(tempFileName, "w");
+    if (!tempFile) {
+        printf("Could not open temporary file for writing.\n");
+        fclose(file);
+        return;
+    }
+
+    // Get line number and new line data from user
+    int lineNumber;
+    printf("Enter line number: ");
+    if (scanf("%d", &lineNumber) != 1) {
+        fclose(file);
+        fclose(tempFile);
+        return;
+    }
+
+    getchar();  // To consume the newline character left by scanf
+    char newLineData[100];
+
+    printf("Enter new data for the line: ");
+    if (!fgets(newLineData, sizeof(newLineData), stdin)) {
+        fclose(file);
+        fclose(tempFile);
+
+        return;
+    }
+
+    // Iterate through the original file and copy contents to temporary file
+    int currentLine = 0;
+    char line[100];
+
+    while (fgets(line, sizeof(line), file)) {
+        currentLine++;
+
+        if (currentLine == lineNumber) {
+            // Write the modified line to the temporary file
+            fprintf(tempFile, "%s", newLineData);
+        }
+        
+        else {
+            // Write the original line to the temporary file
+            fprintf(tempFile, "%s", line);
+        }
+    }
+
+    // Close both files
+    fclose(file);
+    fclose(tempFile);
+
+    // Replace the original file with the modified one
+    if (remove(fileName) != 0) {
+        printf("Failed to delete the original file.\n");
+        return;
+    }
+
+    if (rename(tempFileName, fileName) != 0) {
+        printf("Failed to rename the temporary file.\n");
+        return;
+    }
+
+    printf("Line %d has been successfully modified.\n", lineNumber);
+}
+
+
 
 void FileMultitoolLoop() {
     char input[100];
@@ -212,6 +297,10 @@ void FileMultitoolLoop() {
 
         else if (strcmp(input, "edit") == 0) {
             EditFile();
+        }
+
+        else if (strcmp(input, "line") == 0) {
+            EditLine();
         }
 
         else {
