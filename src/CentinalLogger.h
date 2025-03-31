@@ -21,7 +21,7 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[])
 	}
 	
 	else if (strcmp(stringDataA, "edit") == 0) { 
-		fprintf(file, "%s, was added to %s\n", stringDataB, stringDataC);
+		fprintf(file, "%s, was added to %s\n", stringDataC, stringDataB);
 	}
 	
 	else if (strcmp(stringDataA, "encrypt") == 0) {

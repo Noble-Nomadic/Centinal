@@ -1,6 +1,10 @@
 #ifndef CentinalCommander_h
 #define CentinalCommander_h
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 void Help() {
     printf("Centinal CLI Commands\n");
     printf("1. help - display this\n");
@@ -19,7 +23,7 @@ int processCommand(char input[100]) {
     }
 
     else if (strcmp(input, "exit") == 0) {
-        break;
+        exit(0);
     }
 
     else if (strcmp(input, "files") == 0) {
