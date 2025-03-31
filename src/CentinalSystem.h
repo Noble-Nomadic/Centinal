@@ -7,9 +7,9 @@
 void SystemHelp() {
     printf("Centinal System Commands\n");
     printf("help - display this\n");
-    printf("exit - return to main CLI");
+    printf("exit - return to main CLI\n");
     printf("cpu - view data about cpu usage and type\n");
-    printf("gpu - view data about gpu usage and type");
+    printf("gpu - view data about gpu usage and type\n");
     printf("ram - view data about ram usage and type\n");
     printf("disk - view data about hard drive storage\n");
     printf("sum - summarise basic data about system components and resources\n");
