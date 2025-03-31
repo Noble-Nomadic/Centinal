@@ -175,52 +175,58 @@ void EditFile() {
     fclose(file);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-
 void EditLine() {
     char fileName[100];
     char tempFileName[] = "temp.txt";  // Temporary file name
 
     // Get file name
+    printf("Enter filename: ");
     if (!fgets(fileName, sizeof(fileName), stdin)) {
+        printf("Error reading the filename.\n");
         return;
     }
+
+    // Remove the newline character if it exists
+    fileName[strcspn(fileName, "\n")] = 0;
+
+    // Print the file name for debugging purposes
+    printf("File name entered: %s\n", fileName);
 
     // Open the original file for reading
     FILE *file = fopen(fileName, "r");
     if (!file) {
-        printf("Could not open file for reading.\n");
+        printf("Error: Could not open file '%s'. Please check the file path or permissions.\n", fileName);
         return;
     }
 
     // Open a temporary file for writing
     FILE *tempFile = fopen(tempFileName, "w");
     if (!tempFile) {
-        printf("Could not open temporary file for writing.\n");
+        printf("Error: Could not open temporary file '%s' for writing.\n", tempFileName);
         fclose(file);
         return;
     }
 
     // Get line number and new line data from user
     int lineNumber;
-    printf("Enter line number: ");
+    printf("Enter line number to edit: ");
     if (scanf("%d", &lineNumber) != 1) {
+        printf("Invalid line number.\n");
         fclose(file);
         fclose(tempFile);
         return;
     }
-
     getchar();  // To consume the newline character left by scanf
-    char newLineData[100];
 
+    char newLineData[100];
     printf("Enter new data for the line: ");
     if (!fgets(newLineData, sizeof(newLineData), stdin)) {
+        printf("Error reading new line data.\n");
         fclose(file);
         fclose(tempFile);
-
         return;
     }
+    newLineData[strcspn(newLineData, "\n")] = 0;  // Remove newline from new data
 
     // Iterate through the original file and copy contents to temporary file
     int currentLine = 0;
@@ -231,13 +237,16 @@ void EditLine() {
 
         if (currentLine == lineNumber) {
             // Write the modified line to the temporary file
-            fprintf(tempFile, "%s", newLineData);
-        }
-        
-        else {
+            fprintf(tempFile, "%s\n", newLineData);
+        } else {
             // Write the original line to the temporary file
             fprintf(tempFile, "%s", line);
         }
+    }
+
+    // If line number exceeds the number of lines, append the new data
+    if (currentLine < lineNumber) {
+        fprintf(tempFile, "%s\n", newLineData);
     }
 
     // Close both files
@@ -246,17 +255,18 @@ void EditLine() {
 
     // Replace the original file with the modified one
     if (remove(fileName) != 0) {
-        printf("Failed to delete the original file.\n");
+        printf("Error: Failed to delete the original file '%s'.\n", fileName);
         return;
     }
 
     if (rename(tempFileName, fileName) != 0) {
-        printf("Failed to rename the temporary file.\n");
+        printf("Error: Failed to rename temporary file to '%s'.\n", fileName);
         return;
     }
 
     printf("Line %d has been successfully modified.\n", lineNumber);
 }
+
 
 
 
