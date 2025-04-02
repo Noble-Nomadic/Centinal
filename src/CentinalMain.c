@@ -16,7 +16,7 @@ int main() {
     printf("##       ##       ##  ####    ##     ##  ##  #### ######### ##\n");
     printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
     printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
-    printf("");
+    printf("\n");
 
     printf("Centinal CLI - Type 'help' for help.\n");
     

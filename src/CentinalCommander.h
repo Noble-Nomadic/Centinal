@@ -6,13 +6,21 @@
 #include <string.h>
 
 void Help() {
+    printf(" ######  ######## ##    ## ######## #### ##    ##    ###    ## \n");
+    printf("##    ## ##       ###   ##    ##     ##  ###   ##   ## ##   ## \n");
+    printf("##       ##       ####  ##    ##     ##  ####  ##  ##   ##  ##   \n");
+    printf("##       ######   ## ## ##    ##     ##  ## ## ## ##     ## ##  \n");
+    printf("##       ##       ##  ####    ##     ##  ##  #### ######### ##\n");
+    printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
+    printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
+    printf("\n");
+    printf("V0.2.0\n");
+    printf("\n");
     printf("Centinal CLI Commands\n");
-    printf("1. help - display this\n");
-    printf("2. exit - quit the program\n");
-    printf("3. files - multitool for basic file operations\n");
-    printf("4. security - antivirus scanning\n");
-    printf("5. system - moniter your system resource\n");
-    printf("6. encryption - encrypt and decrypt files\n");
+    printf("1. help - display this                                           2. exit - quit the program\n");
+    printf("3. files - multitool for basic file operations                   4. security - antivirus like file scanner\n");
+    printf("5. system - moniter your system resource                         6. encryption - encrypt and decrypt files\n");
+    printf("7. script - read a text file and execute the centinal commands in it\n");
 }
 
 int processCommand(char input[100]) {
