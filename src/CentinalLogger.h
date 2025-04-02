@@ -25,7 +25,7 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[],
 	}
 	
 	else if (strcmp(stringDataA, "line") == 0) {
-		fprintf(file, "Line %i was set to %s", integerData, stringDataB)
+		fprintf(file, "Line %i was set to %s", integerData, stringDataB);
 	}
 	
 	else if (strcmp(stringDataA, "encrypt") == 0) {
