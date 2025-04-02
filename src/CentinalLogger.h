@@ -1,7 +1,7 @@
 #ifndef CentinalLogger_h
 #define CentinalLogger_h
 
-void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[]) {
+void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[], int integerData) {
 	FILE *file;
 	file = fopen("CentinalLog.txt", "a");
 	
@@ -22,6 +22,10 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[])
 	
 	else if (strcmp(stringDataA, "edit") == 0) { 
 		fprintf(file, "%s, was added to %s\n", stringDataC, stringDataB);
+	}
+	
+	else if (strcmp(stringDataA, "line") == 0) {
+		fprintf(file, "Line %i was set to %s", integerData, stringDataB)
 	}
 	
 	else if (strcmp(stringDataA, "encrypt") == 0) {

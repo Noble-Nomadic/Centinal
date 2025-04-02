@@ -119,7 +119,7 @@ void ScanFile(char filePath[100]) {
             blackListWord[strcspn(blackListWord, "\n")] = 0;
 
             if (strstr(line, blackListWord) != NULL) {
-                LogUpdate("threat", filePath, "blank");
+                LogUpdate("threat", filePath, "blank", 0);
 
                 printf("WARNING, FILE WITH BLACKLISTED WORD FOUND\n");
                 printf("%s\n", filePath);
@@ -164,7 +164,7 @@ void ScanDir(const char *dirPath) {
 
     closedir(dir);
 	
-	LogUpdate("scana", dirPath, "blank");
+	LogUpdate("scana", dirPath, "blank", 0);
 }
 
 void ScanFull(const char *dirPath) {
@@ -201,7 +201,7 @@ void ScanFull(const char *dirPath) {
 
     closedir(dir);
 	
-	LogUpdate("scanb", "blank", "blank");
+	LogUpdate("scanb", "blank", "blank", 0);
 }
 
 
