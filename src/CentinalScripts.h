@@ -13,7 +13,12 @@ void ScriptHelp() {
     printf("read - execute a script\n");
 }
 
-void 
+void ExecuteLine(char line[]) {
+    // Compare the current line against commands
+    if (strcmp(line, "new") == 0) {
+        
+    }
+}
 
 void ReadScript() {
     char fileName[100];
