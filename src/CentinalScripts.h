@@ -34,7 +34,7 @@ void ReadScript() {
     
     char line[100]
     
-    while (!fgets(line, sizeof(line), file)) {
+    while (fgets(line, sizeof(line), file) != NULL) {
         
     }
 
