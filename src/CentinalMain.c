@@ -8,6 +8,7 @@
 #include "CentinalSystem.h"
 #include "CentinalScripts.h"
 #include "CentinalScriptFunctions.h"
+#include "CentinalSettings.h"
 #include "CentinalCommander.h"
 
 int main() {

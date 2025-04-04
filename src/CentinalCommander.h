@@ -14,13 +14,13 @@ void Help() {
     printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
     printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
     printf("\n");
-    printf("V0.2.0\n");
+    printf("V0.2.1\n");
     printf("\n");
     printf("Centinal CLI Commands\n");
-    printf("1. help - display this                                           2. exit - quit the program\n");
-    printf("3. files - multitool for basic file operations                   4. security - antivirus like file scanner\n");
-    printf("5. system - moniter your system resource                         6. encryption - encrypt and decrypt files\n");
-    printf("7. script - read a text file and execute the centinal commands in it\n");
+    printf("1. help - display this                                              2. exit - quit the program\n");
+    printf("3. files - multitool for basic file operations                      4. security - antivirus like file scanner\n");
+    printf("5. system - moniter your system resource                            6. encryption - encrypt and decrypt files\n");
+    printf("7. script - read a text file and execute the commands in it         8. settings - configure centinal\n");
 }
 
 int processCommand(char input[100]) {
@@ -46,6 +46,10 @@ int processCommand(char input[100]) {
 
     else if (strcmp(input, "security") == 0) {
         SecurityLoop();
+    }
+
+    else if (strcmp(input, "settings") == 0) {
+        SettingsLoop();
     }
     
     else {
