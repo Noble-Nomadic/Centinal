@@ -32,7 +32,7 @@ void ReadScript() {
     FILE *file;
     file = fopen(fileName, "r");
     
-    char line[100]
+    char line[100];
     
     while (fgets(line, sizeof(line), file) != NULL) {
         
