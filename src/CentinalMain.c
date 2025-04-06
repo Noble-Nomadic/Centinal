@@ -6,8 +6,9 @@
 #include "CentinalSecurity.h"
 #include "CentinalEncryption.h"
 #include "CentinalSystem.h"
-#include "CentinalScripts"
-#include "CentinalScriptFunctions"
+#include "CentinalScripts.h"
+#include "CentinalScriptFunctions.h"
+#include "CentinalSettings.h"
 #include "CentinalCommander.h"
 
 int main() {
