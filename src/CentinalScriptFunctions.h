@@ -60,4 +60,9 @@ void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineDat
     fclose(tempFile);
 }
 
+void ScriptEncrypt(char inFileName[], char outFileName[]) {
+    FILE *inFile;
+    FILE *outFile;
+}
+
 #endif
