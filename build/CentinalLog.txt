@@ -1,2 +1,0 @@
-Created file File.txt
-Deleted file File.txt
