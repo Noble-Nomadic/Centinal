@@ -63,7 +63,7 @@ void SecurityThreatWhitelist(char filePath[100]) {
     filePath[strcspn(filePath, "\n")] = 0;
     fprintf(whiteListAppend, "%s\n", filePath);
 
-    printf("Next time file is scanned, %s, won't be considered a threat\n");
+    printf("Next time file is scanned, %s, won't be considered a threat\n", filePath);
 
     fclose(whiteListAppend);
 }
@@ -163,8 +163,8 @@ void ScanDir(const char *dirPath) {
     }
 
     closedir(dir);
-	
-	LogUpdate("scana", dirPath, "blank", 0);
+    
+    LogUpdate("scana", dirPath, "blank", 0);
 }
 
 void ScanFull(const char *dirPath) {
@@ -200,8 +200,8 @@ void ScanFull(const char *dirPath) {
     }
 
     closedir(dir);
-	
-	LogUpdate("scanb", "blank", "blank", 0);
+    
+    LogUpdate("scanb", "blank", "blank", 0);
 }
 
 
@@ -232,13 +232,13 @@ void SecurityLoop() {
         }
 
         else if (strcmp(input, "scana") == 0) {
-			
-			char directoryPath[100];
-			
-			if (!fgets(directoryPath, sizeof(directoryPath), stdin)) {
-				return;
-			}
-			
+            
+            char directoryPath[100];
+            
+            if (!fgets(directoryPath, sizeof(directoryPath), stdin)) {
+                return;
+            }
+            
             ScanDir(directoryPath);
         }
 
