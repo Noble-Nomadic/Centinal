@@ -13,7 +13,7 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[],
 	}
 	
 	else if (strcmp(stringDataA, "reset") == 0) {
-		fprintf(file, "Reset file &s\n", stringDataB);
+		fprintf(file, "Reset file %s\n", stringDataB);
 	}
 	
 	else if (strcmp(stringDataA, "delete") == 0) {
