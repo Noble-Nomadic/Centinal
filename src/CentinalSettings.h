@@ -17,7 +17,7 @@ void SettingsLoop() {
         }
         input[strcspn(input, "\n")] = 0;
 
-        else if (strcmp(input, "help") == 0) {
+        if (strcmp(input, "help") == 0) {
             SettingsHelp();
         }
     }
