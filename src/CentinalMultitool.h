@@ -166,7 +166,7 @@ void EditFile() {
         }
 
         strcat(lineToAdd, "\n");
-        fprintf(file, lineToAdd);
+        fprintf(file, "%s", lineToAdd);
 		
 		LogUpdate("edit", fileName, lineToAdd, 0);
     }
