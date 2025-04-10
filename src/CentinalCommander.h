@@ -20,7 +20,8 @@ void Help() {
     printf("1. help - display this                                              2. exit - quit the program\n");
     printf("3. files - multitool for basic file operations                      4. security - antivirus like file scanner\n");
     printf("5. system - moniter your system resource                            6. encryption - encrypt and decrypt files\n");
-    printf("7. script - read a text file and execute the commands in it         8. settings - configure centinal\n");
+    printf("7. script - read a text file and execute its commands (NOT ADDED)   8. settings - configure centinal: (NOT ADDED) \n");
+    printf("9. burner - read and write data to CDs\n");
 }
 
 int processCommand(char input[100]) {
@@ -50,6 +51,10 @@ int processCommand(char input[100]) {
 
     else if (strcmp(input, "settings") == 0) {
         SettingsLoop();
+    }
+
+    else if (strcmp(input, "burner") == 0) {
+        BurnerLoop();
     }
     
     else {

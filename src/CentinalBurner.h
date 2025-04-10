@@ -3,8 +3,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void burn_cd(const char *iso_image) {
+void BurnerHelp() {
+    printf("Centinal File Multitool Commands\n");
+    printf("1. help - show this\n");
+    printf("2. exit - return to main CLI\n");
+    printf("3. burn - burn an ISO file to a cd\n");
+    printf("4. read - view the data of a cd\n");
+    return;
+}
+
+void BurnCD(const char *iso_image) {
     char command[256];
 
     snprintf(command, sizeof(command), "wodim dev=/dev/cdrom %s", iso_image);
@@ -19,7 +29,7 @@ void burn_cd(const char *iso_image) {
     }
 }
 
-void read_cd() {
+void ReadCD() {
     printf("Mounting CD...\n");
     if (system("mount /dev/cdrom /mnt") == 0) {
         printf("CD mounted successfully. Listing contents:\n");
@@ -33,31 +43,45 @@ void read_cd() {
     }
 }
 
-int main() {
-    int choice;
+void BurnerLoop() {
+    char input[100];
     char iso_image[256];
 
-    printf("CD Manager\n");
-    printf("1. Burn a CD\n");
-    printf("8. Read from CD\n");
-    printf("Enter your choice (1 or 8): ");
-    scanf("%d", &choice);
 
-    if (choice == 1) {
-        printf("Enter the path to the ISO image: ");
-        scanf("%s", iso_image);
-        burn_cd(iso_image);
-    } 
+    while (1) {
+        printf("Burner> ");
+        fgets(choice)
 
-    else if (choice == 8) {
-        read_cd();
-    } 
+        if (strcmp(choice, "burn") == 0) {
 
-    else {
-        printf("Invalid choice.\n");
+            printf("Enter the path to the ISO image or CANCEL to cancel: ");
+            scanf("%s", iso_image);
+
+            if (strcmp(iso_image, "CANCEL") == 0) {
+                continue;
+            }
+
+            BurnCD(iso_image);
+        }
+
+        else if (strcmp(choice, "read") == 0) {
+            ReadCD();
+        }
+
+        else if (strcmp(choice, "help") == 0) {
+            BurnerHelp();
+        }
+
+        else if (strcmp(choice, "exit") == 0) {
+            break;
+        }
+
+        else {
+            printf("Invalid choice.\n");
+        }
     }
 
-    return 0;
+    return;
 }
 
 #endif
