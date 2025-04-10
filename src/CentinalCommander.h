@@ -49,10 +49,6 @@ int processCommand(char input[100]) {
         SecurityLoop();
     }
 
-    else if (strcmp(input, "settings") == 0) {
-        SettingsLoop();
-    }
-
     else if (strcmp(input, "burner") == 0) {
         BurnerLoop();
     }
