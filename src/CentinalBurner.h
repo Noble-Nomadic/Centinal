@@ -50,9 +50,12 @@ void BurnerLoop() {
 
     while (1) {
         printf("Burner> ");
-        fgets(choice)
+        if (!fgets(input, sizeof(input), stdin)) {
+            break;
+        }
+        input[strcspn(input, "\n")] = 0;
 
-        if (strcmp(choice, "burn") == 0) {
+        if (strcmp(input, "burn") == 0) {
 
             printf("Enter the path to the ISO image or CANCEL to cancel: ");
             scanf("%s", iso_image);
@@ -64,15 +67,15 @@ void BurnerLoop() {
             BurnCD(iso_image);
         }
 
-        else if (strcmp(choice, "read") == 0) {
+        else if (strcmp(input, "read") == 0) {
             ReadCD();
         }
 
-        else if (strcmp(choice, "help") == 0) {
+        else if (strcmp(input, "help") == 0) {
             BurnerHelp();
         }
 
-        else if (strcmp(choice, "exit") == 0) {
+        else if (strcmp(input, "exit") == 0) {
             break;
         }
 
