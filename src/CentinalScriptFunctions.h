@@ -60,7 +60,29 @@ void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineDat
     fclose(tempFile);
 }
 
-void ScriptEncrypt(char inFileName[], char outFileName[]) {
+void ScriptEncrypt(char inFileName[], char outFileName[], int key) {
+    FILE *inFile;
+    FILE *outFile;
+
+    inFile = fopen(inFileName, "r");
+    outFile = fopen(outFileName, "w");
+
+    char currentChar = fgetc(inFile);
+
+    while (currentChar != EOF) {
+        int ASCIITOAPPEND = currentChar;
+
+        // Encrypt and write to the file
+        fprintf(outFile, "%i ", ASCIITOAPPEND * key);
+
+        currentChar = fgetc(outFile);
+    }
+
+    fclose(inFile);
+    fclose(outFile);
+}
+
+void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
     FILE *inFile;
     FILE *outFile;
 }
