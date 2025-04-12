@@ -85,6 +85,21 @@ void ScriptEncrypt(char inFileName[], char outFileName[], int key) {
 void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
     FILE *inFile;
     FILE *outFile;
+	
+	inFile = fopen(inFileName, "r");
+	outFile = fopen(outFileName, "w");
+	
+	
+	int encryptedValue;
+    while (fscanf(inFile, "%i", &encryptedValue) != EOF) {
+        char decryptedChar = encryptedValue / userKey;
+
+        // Decrypt and write to the file
+        fputc(decryptedChar, decryptedFile);
+    }
+
+    fclose(decryptedFile);
+    fclose(encryptedFile);
 }
 
 #endif
