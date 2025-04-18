@@ -6,6 +6,8 @@ void ScriptMakeFile(char fileName[]) {
     file = fopen(fileName, "w");
     
     fclose(file);
+
+    return;
 }
 
 void ScriptResetFile(char fileName[]) {
@@ -13,10 +15,13 @@ void ScriptResetFile(char fileName[]) {
     file = fopen(fileName, "w");
 
     fclose(file);
+
+    return;
 }
 
-void ScriptDelteFile(char fileName[]) {
+void ScriptDeleteFile(char fileName[]) {
     remove(fileName);
+    return;
 }
 
 void ScriptEditFile(char fileName[], char content[]) {
@@ -26,6 +31,8 @@ void ScriptEditFile(char fileName[], char content[]) {
     fprintf(file, content);
     
     fclose(file);
+
+    return;
 }
 
 void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineData) {
@@ -58,6 +65,8 @@ void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineDat
 
     fclose(file);
     fclose(tempFile);
+
+    return;
 }
 
 void ScriptEncrypt(char inFileName[], char outFileName[], int key) {
@@ -75,11 +84,13 @@ void ScriptEncrypt(char inFileName[], char outFileName[], int key) {
         // Encrypt and write to the file
         fprintf(outFile, "%i ", ASCIITOAPPEND * key);
 
-        currentChar = fgetc(outFile);
+        currentChar = fgetc(inFile);
     }
 
     fclose(inFile);
     fclose(outFile);
+
+    return;
 }
 
 void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
@@ -91,15 +102,17 @@ void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
 	
 	
 	int encryptedValue;
-    while (fscanf(inFile, "%i", &encryptedValue) != EOF) {
-        char decryptedChar = encryptedValue / userKey;
 
-        // Decrypt and write to the file
-        fputc(decryptedChar, decryptedFile);
+    while (fscanf(inFile, "%i", &encryptedValue) != EOF) {
+        // Decrypt the current ASCII data and append it to the file
+        char decryptedChar = encryptedValue / key;
+        fputc(decryptedChar, outFile);
     }
 
     fclose(decryptedFile);
     fclose(encryptedFile);
+
+    return;
 }
 
 #endif

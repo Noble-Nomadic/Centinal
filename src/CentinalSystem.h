@@ -9,7 +9,6 @@ void SystemHelp() {
     printf("help - display this\n");
     printf("exit - return to main CLI\n");
     printf("cpu - view data about cpu usage and type\n");
-    printf("gpu - view data about gpu usage and type\n");
     printf("ram - view data about ram usage and type\n");
     printf("disk - view data about hard drive storage\n");
     printf("sum - summarise basic data about system components and resources\n");
@@ -24,10 +23,6 @@ void SystemCpu() {
 
     printf("Current CPU Status\n");
     system("top -n 1 -b");
-}
-
-void SystemGpu() {
-    system("sudo timeout 1s intel_gpu_top");
 }
 
 void SystemRam() {
@@ -85,10 +80,6 @@ void SystemLoop() {
 
         else if (strcmp(input, "cpu") == 0) {
             SystemCpu();
-        }
-
-        else if (strcmp(input, "gpu") == 0) {
-            SystemGpu();
         }
 
         else if (strcmp(input, "ram") == 0) {

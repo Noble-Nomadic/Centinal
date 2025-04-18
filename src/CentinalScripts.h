@@ -15,9 +15,8 @@ void ScriptHelp() {
 
 void ExecuteLine(char line[]) {
     // Compare the current line against commands
-    if (strcmp(line, "new") == 0) {
-        
-    }
+    // Tokenise the current line and find the main word
+    // After a space, the rest of the line is considered arguments
 }
 
 void ReadScript() {
