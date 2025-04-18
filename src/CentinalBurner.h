@@ -22,6 +22,7 @@ void BurnCD(const char *iso_image) {
     printf("Burning CD with ISO image: %s\n", iso_image);
     if (system(command) == 0) {
         printf("Burning successful!\n");
+        LogUpdate("burn", iso_image, "blank", 0);
     } 
 
     else {
@@ -58,7 +59,9 @@ void BurnerLoop() {
         if (strcmp(input, "burn") == 0) {
 
             printf("Enter the path to the ISO image or CANCEL to cancel: ");
-            scanf("%s", iso_image);
+            fgets(iso_image, sizeof(iso_image), stdin);
+            iso_image[strcspn(iso_image, "\n")] = 0;
+
 
             if (strcmp(iso_image, "CANCEL") == 0) {
                 continue;
