@@ -28,7 +28,7 @@ void ScriptEditFile(char fileName[], char content[]) {
     FILE *file;
     file = fopen(fileName, "a");
     
-    fprintf(file, content);
+    fprintf(file, "%s", content);
     
     fclose(file);
 
@@ -109,10 +109,12 @@ void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
         fputc(decryptedChar, outFile);
     }
 
-    fclose(decryptedFile);
-    fclose(encryptedFile);
+    fclose(inFile);
+    fclose(outFile);
 
     return;
 }
+
+
 
 #endif

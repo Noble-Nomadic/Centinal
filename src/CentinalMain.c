@@ -20,7 +20,7 @@ int main() {
     printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
     printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
     printf("\n");
-    printf("V0.3.0\n");
+    printf("V0.3.1\n");
 
     printf("Centinal CLI - Type 'help' for help.\n");
     

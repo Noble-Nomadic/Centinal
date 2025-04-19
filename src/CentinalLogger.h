@@ -49,7 +49,7 @@ void LogUpdate(char stringDataA[], const char stringDataB[], char stringDataC[],
     }
 
     else if (strcmp(stringDataA, "burn") == 0) {
-        fprintf("%s Image burnt to disc", stringDataB);
+        fprintf(file, "%s Image burnt to disc", stringDataB);
     }
     
     fclose(file);
