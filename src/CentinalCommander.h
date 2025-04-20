@@ -14,13 +14,13 @@ void Help() {
     printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
     printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
     printf("\n");
-    printf("V0.3.1\n");
+    printf("V0.4.0\n");
     printf("\n");
     printf("Centinal CLI Commands\n");
     printf("1. help - display this                                              2. exit - quit the program\n");
     printf("3. files - multitool for basic file operations                      4. security - antivirus like file scanner\n");
     printf("5. system - moniter your system resource                            6. encryption - encrypt and decrypt files\n");
-    printf("7. script - read a text file and execute its commands (NOT ADDED)   8. settings - configure centinal: (NOT ADDED) \n");
+    printf("7. script - read a text file and execute its commands               8. settings - configure centinal: (NOT ADDED) \n");
     printf("9. burner - read and write data to CDs\n");
 }
 
@@ -51,6 +51,10 @@ int processCommand(char input[100]) {
 
     else if (strcmp(input, "burner") == 0) {
         BurnerLoop();
+    }
+
+    else if (strcmp(input, "scripts") == 0) {
+        ScriptLoop();
     }
     
     else {

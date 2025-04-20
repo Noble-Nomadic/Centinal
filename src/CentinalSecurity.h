@@ -21,15 +21,16 @@ void SecurityHelp() {
 }
 
 void SecurityInit() {
-    // Open files, return if files are not found    
+    // Open files, return if files are not found
     whiteListFile = fopen("WhiteList.txt", "r");
     blackListFile = fopen("BlackList.txt", "r");
-    
+
     if (whiteListFile == NULL) {
         printf("WARNING, WHITELIST NOT FOUND\n");
+	printf("");
         return;
     }
-    
+
     else if (blackListFile == NULL) {
         printf("WARNING, BLACKLIST NOT FOUND\n");
         return;

@@ -15,7 +15,7 @@ If you are not using linux, some features will not be compatible, and all users 
 - Logging system: Basics complete
 - CD Burner: Basics complete
 - Settings: Not started
-- Script reader: Started
+- Script reader: Basics complete
 
 ## How it Works
 When the main file is run, it presents a simple CLI system to the user.

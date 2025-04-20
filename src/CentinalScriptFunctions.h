@@ -28,11 +28,9 @@ void ScriptEditFile(char fileName[], char content[]) {
     FILE *file;
     file = fopen(fileName, "a");
     
-    fprintf(file, "%s", content);
+    fprintf(file, "%s\n", content);
     
     fclose(file);
-
-    return;
 }
 
 void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineData) {
@@ -65,6 +63,10 @@ void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineDat
 
     fclose(file);
     fclose(tempFile);
+
+    remove(fileName);               // delete the original
+    rename(tempFileName, fileName); // rename temp file to original
+
 
     return;
 }
@@ -114,7 +116,6 @@ void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
 
     return;
 }
-
 
 
 #endif
