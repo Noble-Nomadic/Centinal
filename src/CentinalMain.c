@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
         printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
         printf("\n");
-        printf("V0.4.0\n");
+        printf("V1.0.0\n");
 
         printf("Centinal CLI - Type 'help' for help.\n");
         
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        // Parse the input to the ExecuteLine() function in the file CentinalScripts.h
+        // Parse the input to ExecuteLine()
         printf("Executing command: %s\n", command);
         ExecuteLine(command);
     }
