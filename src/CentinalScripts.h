@@ -5,20 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Forward declarations
-void ScriptMakeFile(char fileName[]);
-void ScriptResetFile(char fileName[]);
-void ScriptDeleteFile(char fileName[]);
-void ScriptEditFile(char fileName[], char content[]);
-void ScriptEditLine(const char *fileName, int lineNumber, const char *newLineData);
-void ScriptEncrypt(char inFileName[], char outFileName[], int key);
-void ScriptDecrypt(char inFileName[], char outFileName[], int key);
 
 void ScriptHelp() {
     printf("Centinal script reader commands\n");
     printf("help - display this\n");
     printf("exit - return to main CLI\n");
-    printf("read - execute a script\n");
+    printf("execute - execute a script\n");
 }
 
 void ExecuteLine(char line[]) {
@@ -110,9 +102,13 @@ void ScriptLoop() {
 
         if (strcmp(input, "help") == 0) {
             ScriptHelp();
-        } else if (strcmp(input, "exit") == 0) {
+        }
+
+        else if (strcmp(input, "exit") == 0) {
             break;
-        } else if (strcmp(input, "read") == 0) {
+        }
+
+        else if (strcmp(input, "execute") == 0) {
             ReadScript();
         }
     }
