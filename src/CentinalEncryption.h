@@ -29,8 +29,7 @@ void EncryptFile() {
     // Debug: Print the entered file name
     printf("Attempting to open file: '%s'\n", fileName);
 
-    FILE *sourceFile = fopen(fileName, "r");
-
+    FILE *sourceFile = fopen(fileName, "rb"); // Open in binary mode
     if (!sourceFile) {
         perror("Error opening file");
         return;
@@ -61,32 +60,31 @@ void EncryptFile() {
         return;
     }
 
-    FILE *EncryptedFile = fopen(encryptedFileName, "w");
+    FILE *EncryptedFile = fopen(encryptedFileName, "wb"); // Open in binary mode
     if (!EncryptedFile) {
         printf("Could not create encrypted file %s\n", encryptedFileName);
         fclose(sourceFile);
         return;
     }
 
-    char currentChar = fgetc(sourceFile);
-    while (currentChar != EOF) {
-        int ASCIITOAPPEND = currentChar;
+    unsigned char buffer[1024];
+    size_t bytesRead;
 
-        // Encrypt and write to the file
-        fprintf(EncryptedFile, "%i ", ASCIITOAPPEND * userKey);
-
-        currentChar = fgetc(sourceFile);
+    // Read file in chunks and encrypt
+    while ((bytesRead = fread(buffer, 1, sizeof(buffer), sourceFile)) > 0) {
+        for (size_t i = 0; i < bytesRead; i++) {
+            buffer[i] ^= userKey; // XOR encryption
+        }
+        fwrite(buffer, 1, bytesRead, EncryptedFile); // Write encrypted data
     }
 
     fclose(EncryptedFile);
     fclose(sourceFile);
-	
-	LogUpdate("encrypt", fileName, encryptedFileName, 0);
+
+    LogUpdate("encrypt", fileName, encryptedFileName, 0);
 
     printf("Encrypted file created with %i as the key\n", userKey);
 }
-
-
 
 void DecryptFile() {
     char encryptedFileName[100];
@@ -103,8 +101,7 @@ void DecryptFile() {
     // Debug: Print the entered file name
     printf("Attempting to open encrypted file: '%s'\n", encryptedFileName);
 
-    FILE *encryptedFile = fopen(encryptedFileName, "r");
-
+    FILE *encryptedFile = fopen(encryptedFileName, "rb"); // Open in binary mode
     if (!encryptedFile) {
         perror("Error opening file");
         return;
@@ -135,27 +132,29 @@ void DecryptFile() {
         return;
     }
 
-    FILE *decryptedFile = fopen(decryptedFileName, "w");
+    FILE *decryptedFile = fopen(decryptedFileName, "wb"); // Open in binary mode
     if (!decryptedFile) {
         printf("Could not create decrypted file %s\n", decryptedFileName);
-        
         fclose(encryptedFile);
         return;
     }
 
-    int encryptedValue;
-    while (fscanf(encryptedFile, "%i", &encryptedValue) != EOF) {
-        char decryptedChar = encryptedValue / userKey;
+    unsigned char buffer[1024];
+    size_t bytesRead;
 
-        // Decrypt and write to the file
-        fputc(decryptedChar, decryptedFile);
+    // Read file in chunks and decrypt
+    while ((bytesRead = fread(buffer, 1, sizeof(buffer), encryptedFile)) > 0) {
+        for (size_t i = 0; i < bytesRead; i++) {
+            buffer[i] ^= userKey; // XOR decryption
+        }
+        fwrite(buffer, 1, bytesRead, decryptedFile); // Write decrypted data
     }
 
     fclose(decryptedFile);
     fclose(encryptedFile);
-	
-	LogUpdate("decrypt", encryptedFileName, decryptedFileName, 0);
-		
+
+    LogUpdate("decrypt", encryptedFileName, decryptedFileName, 0);
+
     printf("Decrypted file created with %i as the key\n", userKey);
 }
 
