@@ -209,9 +209,11 @@ void EditLine() {
 
     // Get line number and new line data from user
     int lineNumber;
+
     printf("Enter line number to edit: ");
     if (scanf("%d", &lineNumber) != 1) {
         printf("Invalid line number.\n");
+        
         fclose(file);
         fclose(tempFile);
         return;

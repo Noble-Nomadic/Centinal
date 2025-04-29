@@ -14,7 +14,7 @@ void Help() {
     printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
     printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
     printf("\n");
-    printf("V0.4.0\n");
+    printf("V1.1.0\n");
     printf("\n");
     printf("Centinal CLI Commands\n");
     printf("1. help - display this                                              2. exit - quit the program\n");

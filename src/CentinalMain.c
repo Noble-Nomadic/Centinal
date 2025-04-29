@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         printf("##    ## ##       ##   ###    ##     ##  ##   ### ##     ## ##  \n");
         printf(" ######  ######## ##    ##    ##    #### ##    ## ##     ## ########\n");
         printf("\n");
-        printf("V1.0.0\n");
+        printf("V1.1.0\n");
 
         printf("Centinal CLI - Type 'help' for help.\n");
         
@@ -41,7 +41,9 @@ int main(int argc, char *argv[]) {
 
             processCommand(input);        
         }
-    } else { // Command-line arguments provided
+    }
+
+    else { // Command-line arguments provided
         // Combine all arguments into a single command string
         char command[256] = {0};
 
