@@ -1,6 +1,8 @@
 #ifndef CentinalScriptFunctions_h
 #define CentinalScriptFunctions_h
 
+#include "CentinalScripts.h"
+
 void ScriptMakeFile(char fileName[]) {
     FILE *file;
     file = fopen(fileName, "w");
@@ -115,6 +117,10 @@ void ScriptDecrypt(char inFileName[], char outFileName[], int key) {
     fclose(outFile);
 
     return;
+}
+
+void ScriptExecuteScript(char scriptname[]) {
+    ReadScript(scriptname);
 }
 
 

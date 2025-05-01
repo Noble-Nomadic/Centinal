@@ -71,20 +71,15 @@ void ExecuteLine(char line[]) {
             ScriptDecrypt(arg1, arg2, key);
         }
     }
+
+    else if (strcmp(mainWord, "execute") == 0) {
+        if (sscanf(line, "%*s %s", arg1) == 1) {
+            ScriptExecuteScript(arg1);
+        }
+    }
 }
 
-void ReadScript() {
-    char fileName[100];
-    
-    printf("Enter file name: ");
-    if (!fgets(fileName, sizeof(fileName), stdin)) return;
-    fileName[strcspn(fileName, "\n")] = 0;
-
-    FILE *file = fopen(fileName, "r");
-    if (!file) {
-        printf("Failed to open file: %s\n", fileName);
-        return;
-    }
+void ReadScript(char fileName[100]) {
     
     char line[600];
     while (fgets(line, sizeof(line), file)) {
@@ -111,7 +106,19 @@ void ScriptLoop() {
         }
 
         else if (strcmp(input, "execute") == 0) {
-            ReadScript();
+            char fileName[100];
+    
+            printf("Enter file name: ");
+            if (!fgets(fileName, sizeof(fileName), stdin)) return;
+            fileName[strcspn(fileName, "\n")] = 0;
+
+            FILE *file = fopen(fileName, "r");
+            if (!file) {
+                printf("Failed to open file: %s\n", fileName);
+                return;
+            }
+
+            ReadScript(fileName);
         }
     }
 }
