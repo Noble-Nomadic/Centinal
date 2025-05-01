@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "CentinalScriptFunctions.h"
+
 
 void ScriptHelp() {
     printf("Centinal script reader commands\n");

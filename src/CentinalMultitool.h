@@ -292,12 +292,6 @@ void MoveFile() {
     }
     newDirectory[strcspn(newDirectory, "\n")] = 0;  // Remove the newline character
 
-    // Check if file exists
-    if (access(fileName, F_OK) != 0) {
-        printf("Error: File '%s' does not exist.\n", fileName);
-        return;
-    }
-
     // Build the target path
     char targetPath[200];
     snprintf(targetPath, sizeof(targetPath), "%s/%s", newDirectory, fileName);
