@@ -17,6 +17,7 @@ void FileHelp() {
     printf("6. delete - delete a file\n");
     printf("7. edit - append data to a file\n");
     printf("8. line - edit a specific line of a file\n");
+    printf("9. move - move a file to another directory\n");
 }
 
 void NewFile() {
@@ -271,6 +272,47 @@ void EditLine() {
     LogUpdate("line", newLineData, "blank", lineNumber);
 }
 
+void MoveFile() {
+    char fileName[100];
+    char newDirectory[100];
+
+    // Get file name
+    printf("Enter file to move: ");
+    if (!fgets(fileName, sizeof(fileName), stdin)) {
+        printf("Error reading file name.\n");
+        return;
+    }
+    fileName[strcspn(fileName, "\n")] = 0;  // Remove the newline character
+
+    // Get target directory
+    printf("Enter directory to move file to: ");
+    if (!fgets(newDirectory, sizeof(newDirectory), stdin)) {
+        printf("Error reading target directory.\n");
+        return;
+    }
+    newDirectory[strcspn(newDirectory, "\n")] = 0;  // Remove the newline character
+
+    // Check if file exists
+    if (access(fileName, F_OK) != 0) {
+        printf("Error: File '%s' does not exist.\n", fileName);
+        return;
+    }
+
+    // Build the target path
+    char targetPath[200];
+    snprintf(targetPath, sizeof(targetPath), "%s/%s", newDirectory, fileName);
+
+    // Move the file using rename() for better portability
+    if (rename(fileName, targetPath) == 0) {
+        printf("File '%s' moved to '%s'.\n", fileName, newDirectory);
+    } else {
+        perror("Error moving file");
+    }
+
+    // Log the operation
+    LogUpdate("move", fileName, newDirectory, 0);
+}
+
 void FileMultitoolLoop() {
     char input[100];
 
@@ -312,6 +354,10 @@ void FileMultitoolLoop() {
 
         else if (strcmp(input, "line") == 0) {
             EditLine();
+        }
+
+        else if (strcmp(input, "move") == 0) {
+            MoveFile();
         }
 
         else {

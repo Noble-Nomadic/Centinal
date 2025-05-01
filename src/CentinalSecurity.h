@@ -17,6 +17,7 @@ void SecurityHelp() {
     printf("exit - return to main CLI\n");
     printf("scana - scan a directory\n");
     printf("scanb - scan all files\n");
+    printf("centinal - start the centinal background monitor\n");
 }
 
 void SecurityInit() {
@@ -210,6 +211,11 @@ void ScanFull(const char *dirPath) {
     LogUpdate("scanb", "blank", "blank", 0);
 }
 
+void CentinalWatch() {
+    return;
+}
+
+
 void SecurityLoop() {
     char input[100];
     printf("Initialising security...\n");
@@ -246,6 +252,10 @@ void SecurityLoop() {
 
         else if (strcmp(input, "scanb") == 0) {
             ScanFull(".");
+        }
+
+        else if (strcmp(input, "centinal") == 0) {
+            CentinalWatch();
         }
 
         else {
