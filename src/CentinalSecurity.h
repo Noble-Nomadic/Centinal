@@ -26,7 +26,7 @@ void SecurityInit() {
     if (blackListFile == NULL) {
         printf("WARNING, BLACKLIST NOT FOUND\n");
         FILE *file;
-        file = fopen(blackListFile, "w");
+        file = fopen("Blacklist.txt", "w");
 
         printf("Blank blacklist. Scan will not function properly\n");
 

@@ -7,7 +7,6 @@
 
 #include "CentinalScriptFunctions.h"
 
-
 void ScriptHelp() {
     printf("Centinal script reader commands\n");
     printf("help - display this\n");
@@ -79,8 +78,7 @@ void ExecuteLine(char line[]) {
     }
 }
 
-void ReadScript(char fileName[100]) {
-    
+void ReadScript(FILE *file) {
     char line[600];
     while (fgets(line, sizeof(line), file)) {
         ExecuteLine(line);
@@ -118,7 +116,7 @@ void ScriptLoop() {
                 return;
             }
 
-            ReadScript(fileName);
+            ReadScript(file);
         }
     }
 }
